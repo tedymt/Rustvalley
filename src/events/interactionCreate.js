@@ -65,26 +65,16 @@ module.exports = {
                 return await interaction.update({ content: '✅ Anúncio removido com sucesso!', components: [], embeds: [] });
             }
 
-            if (customId === 'select_ann_channel') {
-                const channelId = interaction.values[0];
-                const moduleAnn = require('../interactions/modules/module_announcements.js');
-                const currentEmbed = interaction.message?.embeds?.[0] || {};
-                const isEveryone = interaction.message?.content?.includes('everyone') || false;
-
-                return await moduleAnn.execute(interaction, {
-                    title: currentEmbed.title || 'Título',
-                    content: currentEmbed.description || 'Mensagem',
-                    imageUrl: currentEmbed.image?.url || null,
-                    mentionEveryone: isEveryone,
-                    channelId: channelId
-                });
+            // --- ROLE PANEL PUBLISH (CORREÇÃO DE ROTEAMENTO DINÂMICO) ---
+            if (customId.startsWith('select_role_publish_channel_')) {
+                const handler = require('../interactions/selects/select_role_publish_channel.js');
+                return await handler.execute(interaction);
             }
 
             let handlerName = customId;
 
             // --- ROTEAMENTO DINÂMICO ---
             if (customId.startsWith('select_role_add_handler_')) handlerName = 'select_role_add_handler';
-            if (customId.startsWith('select_role_publish_channel_')) handlerName = 'select_role_publish_channel';
             if (customId.startsWith('public_role_panel_')) handlerName = 'public_role_panel';
             if (customId.startsWith('setup_rust_lfg_')) handlerName = 'setup_rust_lfg';
             if (customId === 'suggestion_channel_setup_menu') handlerName = 'select_suggestion_channel_setup';
@@ -191,7 +181,7 @@ module.exports = {
                 return; 
             }
 
-            // BOTÃO CANCELAR/VOLTAR (NOVO)
+            // BOTÃO CANCELAR/VOLTAR DO ANÚNCIO (NOVO)
             if (customId === 'module_announcements') {
                 const handler = require('../interactions/modules/module_announcements.js');
                 return await handler.execute(interaction);
@@ -201,10 +191,10 @@ module.exports = {
 
             // --- ROTEAMENTO GERAL ---
             if (customId === 'btn_lfg_banner') handlerName = 'btn_lfg_banner';
-            if (customId === 'btn_set_timezone') handlerName = 'btn_set_timezone'; // <--- ADICIONADO
-            if (customId === 'publish_ticket_panel') handlerName = 'publish_ticket_panel'; // <--- ADICIONADO
-            if (customId === 'btn_test_suggest') handlerName = 'btn_test_suggest'; // <--- ADICIONADO
-            if (customId === 'test_welcome') handlerName = 'test_welcome'; // <--- ADICIONADO
+            if (customId === 'btn_set_timezone') handlerName = 'btn_set_timezone';
+            if (customId === 'publish_ticket_panel') handlerName = 'publish_ticket_panel';
+            if (customId === 'btn_test_suggest') handlerName = 'btn_test_suggest';
+            if (customId === 'test_welcome') handlerName = 'test_welcome';
 
             if (customId.startsWith('btn_mapvote_')) handlerName = 'btn_mapvote';
             if (customId.startsWith('rate_')) handlerName = 'ratingHandler';
@@ -247,10 +237,10 @@ module.exports = {
             if (customId === 'module_roles_btn') handlerName = 'module_roles_btn';
             if (customId === 'btn_create_role_panel') handlerName = 'btn_create_role_panel';
             
-            // --- CORREÇÃO DO ROLE BANNER (Permite estático e dinâmico) ---
+            // --- CORREÇÃO DO ROLE BANNER E PUBLISH (Permite estático e dinâmico) ---
             if (customId.startsWith('btn_role_add_')) handlerName = 'btn_role_add';
             if (customId.startsWith('btn_role_edit_text_')) handlerName = 'btn_role_edit_text';
-            if (customId.startsWith('btn_role_publish')) handlerName = 'btn_role_publish';
+            if (customId.startsWith('btn_role_publish')) handlerName = 'btn_role_publish'; // <--- CORREÇÃO DE PUBLISH
             if (customId.startsWith('btn_role_delete_')) handlerName = 'btn_role_delete';
             if (customId.startsWith('btn_role_toggle_')) handlerName = 'btn_role_toggle';
             if (customId.startsWith('btn_role_set_banner')) handlerName = 'btn_role_set_banner'; // <--- FIXADO (Era _ no final)

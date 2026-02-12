@@ -1,0 +1,226 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// 1. CONFIGURAÇÕES DA GUILDA
+// ==========================================
+model Guild {
+  id                  String    @id
+  language            String    @default("pt-BR")
+antiMedia           Boolean   @default(false) // <--- NOVO CAMPO
+suggestionBanner    String?
+  // Boas-Vindas
+  welcomeChannel      String?
+  welcomeMsg          String?
+  byeChannel          String?
+  byeMsg              String?
+  autoResponseChannels String?  // IDs dos canais permitidos (separados por vírgula)
+  autoResponses        AutoResponse[]
+  // Sugestões
+  // --- RUST TEAM FINDER (LFG) ---
+  rustLfgChannelPT    String?   // Canal para posts em Português
+  rustLfgChannelEN    String?   // Canal para posts em Inglês
+  suggestionChannelPT String?
+  suggestionChannelEN String?
+  autoResponseEnabled  Boolean   @default(true) // <--- NOVO CAMPO
+  // Segurança
+  securityLogChannel  String?
+  antiLink            Boolean   @default(false)
+  minAccountAge       Int       @default(0)
+  antiToxic           Boolean   @default(false)
+  antiSpam            Boolean   @default(false)
+  maxMentions         Int       @default(0)
+rustLfgBanner     String?
+  // Rust Global
+  rustTimezone        String    @default("UTC")
+  rustLogChannel      String?   // Logs de Queda (Crash)
+  rustAnnounceChannel String?   // Anúncios de Wipe
+
+  // Relação com Servidores Rust
+  rustServers         RustServer[]
+}
+model AutoResponse {
+  id         Int    @id @default(autoincrement())
+  guildId    String
+  
+  trigger    String // Gatilho em PT (ex: "Loja")
+  triggerEN  String? // Gatilho em EN (ex: "Store") - AUTO PREENCHIDO
+  
+  responsePT String // Resposta em PT
+  responseEN String // Resposta em EN - AUTO PREENCHIDO
+  
+  guild      Guild  @relation(fields: [guildId], references: [id], onDelete: Cascade)
+}
+// ==========================================
+// 2. SISTEMA RUST (MULTI-SERVER)
+// ==========================================
+model RustServer {
+  id              Int       @id @default(autoincrement())
+  guildId         String
+  guild           Guild     @relation(fields: [guildId], references: [id], onDelete: Cascade)
+  imageUrl           String?   // Link do Banner do Wipe
+  name            String    // Ex: "Main 2x"
+  serverIP        String
+  serverPort      String    @default("28015")
+  // NOVOS CAMPOS PARA ANÚNCIO INDIVIDUAL
+  announceChannelId String? // Canal específico deste server
+  language          String  @default("PT") // PT ou EN
+  customWipeMessage String? // Texto personalizado (Opcional)
+  // Wipe
+  nextWipe        DateTime?
+  wipeMessage     String?   // Mensagem customizada
+  wipeAnnounced   Boolean   @default(false) // Trava para não repetir anúncio
+  isOnline           Boolean   @default(true) // Para o Monitor de Status
+  // Canais de Monitoramento
+  playerCountChannel String? // "🟢 100/200"
+  wipeCountChannel   String? // "⏳ Wipe: 2d"
+}
+
+// ==========================================
+// 3. OUTROS SISTEMAS (MANTIDOS)
+// ==========================================
+model Suggestion {
+  id        Int      @id @default(autoincrement())
+  guildId   String
+  authorId  String
+  content   String
+  status    String   @default("PENDING")
+  messageId String?
+  channelId String?
+  createdAt DateTime @default(now())
+  votes     Vote[]
+}
+// ==========================================
+// 5. SISTEMA DE SORTEIOS (GIVEAWAY)
+// ==========================================
+model Giveaway {
+  id        Int      @id @default(autoincrement())
+  guildId   String
+  channelId String
+  messageId String   @unique
+  description String?
+  prize     String   // O prêmio
+  winners   Int      @default(1)
+  endTime   DateTime
+  hostId    String   // Quem criou
+  
+  ended     Boolean  @default(false)
+  entries   String[] // Lista de IDs dos participantes
+}
+model Vote {
+  id           Int        @id @default(autoincrement())
+  suggestionId Int
+  userId       String
+  type         String
+  suggestion   Suggestion @relation(fields: [suggestionId], references: [id], onDelete: Cascade)
+  @@unique([suggestionId, userId])
+}
+
+model Infraction {
+  id        Int      @id @default(autoincrement())
+  guildId   String
+  userId    String
+  level     Int      @default(0)
+  lastOccur DateTime @default(now())
+  @@unique([guildId, userId])
+}
+model ScheduledAnnouncement {
+  id            Int      @id @default(autoincrement())
+  guildId       String
+  channelId     String
+  title         String
+  content       String   @db.Text
+  imageUrl      String?
+  mentionEveryone Boolean @default(false)
+  scheduledTime DateTime
+  intervalDays  Int      @default(0) // 0 = Uma vez, >0 = Repetir a cada X dias
+  status        String   @default("PENDING") // PENDING, SENT, CANCELLED
+  createdAt     DateTime @default(now())
+}
+model TicketConfig {
+  guildId       String  @id
+  categoryID    String?
+  logsChannelID String?
+  supportRoleID String?
+  title         String  @default("Central de Atendimento / Support Center")
+  description   String  @default("🇧🇷 Selecione um departamento abaixo.\n🇺🇸 Select a department below.")
+  color         String  @default("#5865F2")
+  footer        String  @default("Rustvalley Manager • Enterprise System")
+  banner        String?
+  sendTranscriptToDM Boolean @default(false)
+}
+
+model Department {
+  id      Int    @id @default(autoincrement())
+  guildId String
+  name    String
+  emoji   String @default("📩")
+}
+
+model Ticket {
+  id            Int       @id @default(autoincrement())
+  guildId       String
+  channelId     String    @unique
+  authorId      String
+  staffId       String?
+  ticketCode    String?   @unique
+  transcriptUrl String?
+  status        String    @default("OPEN")
+  rating        Int?
+  createdAt     DateTime  @default(now())
+  closedAt      DateTime?
+}
+// ==========================================
+// 4. MÓDULO CARGOS (ROLE REACTION)
+// ==========================================
+model RolePanel {
+  id          Int          @id @default(autoincrement())
+  guildId     String
+  channelId   String?      // Onde o painel foi publicado
+  messageId   String?      // ID da mensagem publicada (para editar depois)
+  
+  title       String       @default("🎭 Central de Cargos / Role Center")
+  description String       @default("🇧🇷 Selecione os cargos que deseja no menu abaixo.\n🇺🇸 Select the roles you want in the menu below.")
+  imageUrl    String?
+  options     RoleOption[]
+}
+model MapPoll {
+  id        Int           @id @default(autoincrement())
+  guildId   String
+  channelId String
+  messageId String
+  status    String        @default("OPEN") // OPEN, CLOSED
+  mapA_Name String
+  mapA_Url  String
+  mapB_Name String
+  mapB_Url  String
+  mapC_Name String?       // <--- NOVO (Opcional)
+  mapC_Url  String?       // <--- NOVO (Opcional)
+  createdAt DateTime      @default(now())
+  votes     MapPollVote[]
+}
+
+model MapPollVote {
+  id         Int      @id @default(autoincrement())
+  pollId     Int
+  poll       MapPoll  @relation(fields: [pollId], references: [id], onDelete: Cascade)
+  userId     String
+  choice     String   // "A" or "B"
+  
+  @@unique([pollId, userId]) // Garante 1 voto por pessoa nesta enquete
+}
+model RoleOption {
+  id        Int       @id @default(autoincrement())
+  panelId   Int
+  roleId    String
+  label     String
+  emoji     String    @default("💠")
+  
+  panel     RolePanel @relation(fields: [panelId], references: [id], onDelete: Cascade)
+}

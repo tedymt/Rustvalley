@@ -1,0 +1,26 @@
+{
+  "name": "Rustvalley-manager",
+  "version": "2.0.0",
+  "description": "Enterprise Discord Bot",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "postinstall": "prisma generate",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@iamtraction/google-translate": "^2.0.1",
+    "@prisma/client": "^5.10.2",
+    "axios": "^1.7.9",
+    "discord-html-transcripts": "^3.1.4",
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7",
+    "gamedig": "^5.0.0",
+    "i18next": "^24.2.2",
+    "luxon": "^3.5.0",
+    "node-cron": "^3.0.3",
+    "prisma": "^5.10.2"
+  }
+}

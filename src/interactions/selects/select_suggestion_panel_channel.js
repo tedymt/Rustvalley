@@ -19,7 +19,7 @@ module.exports = {
             )
             .setColor('#F1C40F')
             .setImage(bannerUrl) // <--- IMAGEM DINÂMICA
-            .setFooter({ text: 'Rustvalley Manager • Feedback' });
+            .setFooter({ text: 'Koda Manager • Feedback' });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()

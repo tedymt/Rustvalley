@@ -2,12 +2,12 @@ const i18next = require('i18next');
 
 const translations = {
     'pt-BR': {
-        WELCOME_DASHBOARD: "Bem-vindo ao Painel Rustvalley Manager",
+        WELCOME_DASHBOARD: "Bem-vindo ao Painel Koda Manager",
         SELECT_MODULE: "Selecione um módulo para configurar",
         RUST_CONFIG: "Configurações de Rust"
     },
     'en-US': {
-        WELCOME_DASHBOARD: "Welcome to Rustvalley Manager Dashboard",
+        WELCOME_DASHBOARD: "Welcome to Koda Manager Dashboard",
         SELECT_MODULE: "Select a module to configure",
         RUST_CONFIG: "Rust Settings"
     }

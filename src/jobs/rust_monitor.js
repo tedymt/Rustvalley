@@ -276,7 +276,7 @@ async function updateWipeEmbedCountdown(client, guild, server) {
                 .setDescription(isPT ? 'A data do próximo Wipe ainda não foi definida.' : 'Next Wipe date has not been set yet.')
                 .setColor('#2B2D31')
                 .setThumbnail(guild.iconURL({ dynamic: true }) || null)
-                .setFooter({ text: 'Rustvalley Manager' });
+                .setFooter({ text: 'Koda Manager' });
         } 
         else {
             const now = new Date();

@@ -1,12 +1,12 @@
 1. Introdução Executiva
 
-O Rustvalley Manager não é apenas um bot de moderação; é uma Plataforma de Gestão de Comunidades de Alta Performance, desenvolvida especificamente para servidores de jogos (com especialização em Rust) e comunidades internacionais.
+O Koda Manager não é apenas um bot de moderação; é uma Plataforma de Gestão de Comunidades de Alta Performance, desenvolvida especificamente para servidores de jogos (com especialização em Rust) e comunidades internacionais.
 
-Diferente de bots genéricos, o Rustvalley opera sob uma arquitetura de Persistência de Dados Total e Inteligência Bilíngue, garantindo que a experiência seja fluida tanto para usuários brasileiros quanto para estrangeiros, sem necessidade de configurações duplicadas complexas.
+Diferente de bots genéricos, o Koda opera sob uma arquitetura de Persistência de Dados Total e Inteligência Bilíngue, garantindo que a experiência seja fluida tanto para usuários brasileiros quanto para estrangeiros, sem necessidade de configurações duplicadas complexas.
 
 2. O Diferencial: Inteligência Híbrida (PT-BR / EN-US) 🌎
 
-O núcleo do Rustvalley Manager foi construído para ser Nativamente Global.
+O núcleo do Koda Manager foi construído para ser Nativamente Global.
 
 
 
@@ -22,7 +22,7 @@ Interfaces Espelhadas: Módulos como o Team Finder (LFG) e Sugestões geram inte
 
 3. Módulo RUST SENTINEL (O Coração do Sistema) ☢️
 
-O Rustvalley possui um monitoramento de servidores Rust , operando com redundância de APIs.
+O Koda possui um monitoramento de servidores Rust , operando com redundância de APIs.
 
 
 
@@ -74,7 +74,7 @@ Sistema visual onde o admin cadastra as opções de mapas (com imagens) e o bot 
 
 5. Segurança e Moderação Automática 🛡️
 
-O Rustvalley atua como um guardião 24/7 do servidor.
+O Koda atua como um guardião 24/7 do servidor.
 
 
 
@@ -112,4 +112,4 @@ Centralized Handler: Todo clique em botão passa por um roteador central intelig
 
 Conclusão
 
-O Rustvalley Manager entrega uma solução "All-in-One". Ele substitui a necessidade de contratar 7 bots diferentes (um para Ticket, um para Rust, um para Sorteio, etc.). Ele centraliza a gestão com profissionalismo, estética refinada e inteligência de adaptação linguística para comunidades globais, todos os serviços fornecidos pelo bot possuem a adaptação para as duas linguas.
+O Koda Manager entrega uma solução "All-in-One". Ele substitui a necessidade de contratar 7 bots diferentes (um para Ticket, um para Rust, um para Sorteio, etc.). Ele centraliza a gestão com profissionalismo, estética refinada e inteligência de adaptação linguística para comunidades globais, todos os serviços fornecidos pelo bot possuem a adaptação para as duas linguas.

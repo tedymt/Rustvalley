@@ -21,7 +21,7 @@ module.exports = {
             )
             .setColor('#E67E22')
             .setImage(bannerUrl) // Aplica a imagem configurada ou a padrão
-            .setFooter({ text: 'Rustvalley Manager • LFG System' });
+            .setFooter({ text: 'Koda Manager • LFG System' });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()

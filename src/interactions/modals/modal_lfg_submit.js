@@ -44,7 +44,7 @@ module.exports = {
             )
             .setColor(isPT ? '#2ECC71' : '#3498DB')
             .setThumbnail(user.displayAvatarURL({ dynamic: true }))
-            .setFooter({ text: `Rustvalley LFG • User ID: ${user.id}` }) // ID visível apenas para debug visual
+            .setFooter({ text: `Koda LFG • User ID: ${user.id}` }) // ID visível apenas para debug visual
             .setTimestamp();
 
         // --- BOTÃO DE CONEXÃO ---

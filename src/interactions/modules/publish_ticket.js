@@ -42,7 +42,7 @@ module.exports = {
                 'Central de Atendimento', 
                 'Clique abaixo para abrir um ticket',
                 'Clique no botão do departamento desejado para abrir um ticket.',
-                'Rustvalley Studios'
+                'Koda Studios'
             ];
 
             // Se o título for vazio OU for um dos antigos, usa o novo
@@ -60,7 +60,7 @@ module.exports = {
 
             // Se o footer for vazio OU for o antigo, usa o novo
             if (!footer || oldDefaults.includes(footer)) {
-                footer = 'Rustvalley Manager • Enterprise System';
+                footer = 'Koda Manager • Enterprise System';
             }
 
             // --- MONTA A VITRINE ---

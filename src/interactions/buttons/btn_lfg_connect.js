@@ -72,7 +72,7 @@ module.exports = {
                 )
                 .setThumbnail(interestedUser.displayAvatarURL())
                 .setColor('#E67E22')
-                .setFooter({ text: 'Rustvalley Manager • LFG System' })
+                .setFooter({ text: 'Koda Manager • LFG System' })
                 .setTimestamp();
 
             await targetUser.send({ embeds: [dmEmbed] });

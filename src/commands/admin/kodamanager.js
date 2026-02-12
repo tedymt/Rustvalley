@@ -10,7 +10,7 @@ const {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('kodamanager')
-        .setDescription('Painel Central do Rustvalley Manager / Central Dashboard')
+        .setDescription('Painel Central do Koda Manager / Central Dashboard')
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
     async execute(interaction) {
@@ -33,12 +33,12 @@ module.exports = {
         }
 
         const embed = new EmbedBuilder()
-            .setTitle(`🛰️ Rustvalley Manager | ${lang === 'pt-BR' ? 'Painel de Controle' : 'Control Panel'}`)
+            .setTitle(`🛰️ Koda Manager | ${lang === 'pt-BR' ? 'Painel de Controle' : 'Control Panel'}`)
             .setDescription(lang === 'pt-BR' 
                 ? 'Bem-vindo à cabine de comando. Selecione um módulo abaixo para configurar as funções do servidor.' 
                 : 'Welcome to the cockpit. Select a module below to configure server functions.')
             .setColor('#2b2d31')
-            .setFooter({ text: 'Rustvalley Studios - Indestructible System' });
+            .setFooter({ text: 'Koda Studios - Indestructible System' });
 
         const menu = new ActionRowBuilder()
             .addComponents(

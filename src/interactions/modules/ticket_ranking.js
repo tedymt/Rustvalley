@@ -42,7 +42,7 @@ module.exports = {
             .setTitle('🏆 Ranking da Equipe / Staff Ranking')
             .setDescription(desc)
             .setColor('#F1C40F')
-            .setFooter({ text: 'Rustvalley Manager Analytics' });
+            .setFooter({ text: 'Koda Manager Analytics' });
 
         // --- 3. BOTÃO VOLTAR (Corrigido) ---
         // Aponta para 'back_to_tickets' para voltar ao menu anterior

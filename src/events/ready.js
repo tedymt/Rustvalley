@@ -8,7 +8,7 @@ module.exports = {
         console.log(`✅ Logado como ${client.user.tag}`);
         
         // Define status
-        client.user.setActivity('Rustvalley Manager Enterprise', { type: ActivityType.Watching });
+        client.user.setActivity('Koda Manager Enterprise', { type: ActivityType.Watching });
 
         // --- INICIA O MONITOR RUST ---
         rustMonitor.execute(client);

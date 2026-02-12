@@ -39,7 +39,7 @@ module.exports = {
                 { name: '📜 Logs', value: sLog, inline: true }
             )
             .setColor('#2b2d31')
-            .setFooter({ text: 'Rustvalley Manager • Enterprise Protection Suite' });
+            .setFooter({ text: 'Koda Manager • Enterprise Protection Suite' });
 
         // Menu de Canais (Mantido)
         const rowLogs = new ActionRowBuilder().addComponents(

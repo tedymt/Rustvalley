@@ -30,7 +30,7 @@ module.exports = {
                 { name: '💬 Gatilhos Ativos', value: `\`${responses.length}\` respostas configuradas.`, inline: false }
             )
             .setColor(statusColor)
-            .setFooter({ text: 'Rustvalley Manager • Automation' });
+            .setFooter({ text: 'Koda Manager • Automation' });
 
         if (responses.length > 0) {
             const list = responses.slice(0, 10).map(r => `• **${r.trigger}**: ${r.responsePT.substring(0, 20)}...`).join('\n');

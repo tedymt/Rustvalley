@@ -88,7 +88,7 @@ module.exports = {
                 .setDescription(welcomeDesc + `\n\n🆔 **Protocolo:** \`${ticketCode}\``)
                 .setColor(config?.color || '#5865F2')
                 .setThumbnail(guild.iconURL({ dynamic: true }))
-                .setFooter({ text: 'Rustvalley Manager Enterprise' });
+                .setFooter({ text: 'Koda Manager Enterprise' });
 
             const row = new ActionRowBuilder().addComponents(
                 new ButtonBuilder().setCustomId('close_ticket').setLabel('Fechar / Close').setStyle(ButtonStyle.Danger).setEmoji('🔒'),

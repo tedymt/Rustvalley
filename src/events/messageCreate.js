@@ -218,7 +218,7 @@ module.exports = {
 
                 // 2. Aplica Mute (se houver duração)
                 if (muteDuration > 0) {
-                    await message.member.timeout(muteDuration, `Rustvalley Security: ${deleteReason}`).catch(() => {
+                    await message.member.timeout(muteDuration, `Koda Security: ${deleteReason}`).catch(() => {
                         actionText += " (Falha ao mutar - Verifique permissões)";
                     });
                     actionText += ` + Mute ${muteDuration / 60000}m`;

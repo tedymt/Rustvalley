@@ -17,7 +17,7 @@ module.exports = {
             .setTitle(config?.title || "🎫 Central de Atendimento")
             .setDescription(config?.description || "Clique no botão do departamento desejado para abrir um ticket.")
             .setColor(config?.color || "#5865F2")
-            .setFooter({ text: config?.footer || "Rustvalley Manager - Enterprise System" });
+            .setFooter({ text: config?.footer || "Koda Manager - Enterprise System" });
 
         if (config?.banner) embed.setImage(config.banner);
 

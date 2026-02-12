@@ -28,7 +28,7 @@ module.exports = {
                     { name: '💻 Console Command', value: `\`\`\`client.connect ${server.connectUrl}\`\`\`` }
                 )
                 .setColor('#CE422B')
-                .setFooter({ text: 'Rustvalley Manager • Rust Sentinel' });
+                .setFooter({ text: 'Koda Manager • Rust Sentinel' });
 
             // Resposta Ephemeral (Só quem clicou vê)
             await interaction.reply({ embeds: [embed], ephemeral: true });

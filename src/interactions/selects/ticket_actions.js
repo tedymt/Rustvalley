@@ -22,7 +22,7 @@ module.exports = {
             const target = await interaction.client.users.fetch(ticketData.authorId).catch(() => null);
             if (target) {
                 await target.send({
-                    content: `🔔 **Rustvalley Manager Notification**\n\n🇧🇷 Olá, aguardamos sua resposta no ticket.\n🇺🇸 Hello, we are waiting for your response.\n\n🔗 **Acesse aqui / Click here:** ${ticketLink}`
+                    content: `🔔 **Koda Manager Notification**\n\n🇧🇷 Olá, aguardamos sua resposta no ticket.\n🇺🇸 Hello, we are waiting for your response.\n\n🔗 **Acesse aqui / Click here:** ${ticketLink}`
                 }).catch(() => {
                     return interaction.reply({ content: '❌ DM Fechada / DM Closed.', flags: MessageFlags.Ephemeral });
                 });

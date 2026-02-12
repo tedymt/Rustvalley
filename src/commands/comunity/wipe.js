@@ -28,7 +28,7 @@ module.exports = {
             .setTitle('☢️ Cronograma & Status (Wipe Schedule)')
             .setDescription('🇧🇷 Confira abaixo o status e a data do próximo Wipe.\n🇺🇸 Check below for server status and next wipe date.')
             .setColor('#CE422B')
-            .setFooter({ text: 'Rustvalley Manager • Realtime Data' })
+            .setFooter({ text: 'Koda Manager • Realtime Data' })
             .setTimestamp();
 
         // 3. Loop Inteligente: Processa cada servidor

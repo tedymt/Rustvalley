@@ -1,9 +1,9 @@
-const command = require('../../commands/admin/Rustvalleymanager.js');
+const command = require('../../commands/admin/kodamanager.js');
 
 module.exports = {
     async execute(interaction) {
         // Reutiliza a lógica do comando principal, mas forçando um update
-        // Precisamos adaptar levemente o execute do Rustvalleymanager ou replicar a lógica aqui:
+        // Precisamos adaptar levemente o execute do kodamanager ou replicar a lógica aqui:
         
         // Simplesmente chamamos o comando principal, mas tratamos como update
         // Nota: O comando original usa reply, aqui faremos update manual para ficar fluido.
@@ -12,10 +12,10 @@ module.exports = {
         const lang = interaction.locale === 'pt-BR' ? 'pt-BR' : 'en-US';
 
         const embed = new EmbedBuilder()
-            .setTitle(`🛰️ Rustvalley Manager | Painel de Controle`)
+            .setTitle(`🛰️ Koda Manager | Painel de Controle`)
             .setDescription('Bem-vindo à cabine de comando. Selecione um módulo abaixo.')
             .setColor('#2b2d31')
-            .setFooter({ text: 'Rustvalley Studios - Indestructible System' });
+            .setFooter({ text: 'Koda Studios - Indestructible System' });
 
         const menu = new ActionRowBuilder().addComponents(
             new StringSelectMenuBuilder()

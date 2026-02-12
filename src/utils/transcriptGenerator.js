@@ -9,7 +9,7 @@ async function generateTranscript(channel, guild) {
             fileName: `ticket-${channel.name}.html`,
             poweredBy: false, 
             saveImages: true,
-            footerText: `Exportado por Rustvalley Manager • ${guild.name}`,
+            footerText: `Exportado por Koda Manager • ${guild.name}`,
             headerText: `Ticket: ${channel.name}`, 
             headerColor: '#2B2D31' 
         });
@@ -30,7 +30,7 @@ async function generateTranscript(channel, guild) {
         const customStyles = `
             <style>
                 discord-header { display: none !important; } 
-                .Rustvalley-premium-header {
+                .koda-premium-header {
                     background-color: #2B2D31;
                     border-bottom: 4px solid #5865F2;
                     padding: 25px;
@@ -40,28 +40,28 @@ async function generateTranscript(channel, guild) {
                     margin-bottom: 20px;
                     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
                 }
-                .Rustvalley-guild-icon {
+                .koda-guild-icon {
                     width: 80px; height: 80px; border-radius: 50%;
                     border: 3px solid #5865F2; margin-right: 20px; object-fit: cover;
                 }
-                .Rustvalley-info { flex-grow: 1; }
-                .Rustvalley-guild-name { color: #FFFFFF; font-size: 24px; font-weight: 800; margin: 0; }
-                .Rustvalley-ticket-name { color: #B9BBBE; font-size: 16px; margin-top: 5px; }
-                .Rustvalley-meta { text-align: right; color: #72767D; font-size: 12px; }
-                .Rustvalley-badge { background: #5865F2; color: white; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+                .koda-info { flex-grow: 1; }
+                .koda-guild-name { color: #FFFFFF; font-size: 24px; font-weight: 800; margin: 0; }
+                .koda-ticket-name { color: #B9BBBE; font-size: 16px; margin-top: 5px; }
+                .koda-meta { text-align: right; color: #72767D; font-size: 12px; }
+                .koda-badge { background: #5865F2; color: white; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; }
             </style>
         `;
 
         // HTML do Cabeçalho
         const customHeaderHTML = `
-            <div class="Rustvalley-premium-header">
-                <img src="${guildIcon}" class="Rustvalley-guild-icon" alt="Icon">
-                <div class="Rustvalley-info">
-                    <h1 class="Rustvalley-guild-name">${guildName}</h1>
-                    <div class="Rustvalley-ticket-name">📂 Ticket: <b>${ticketName}</b></div>
+            <div class="koda-premium-header">
+                <img src="${guildIcon}" class="koda-guild-icon" alt="Icon">
+                <div class="koda-info">
+                    <h1 class="koda-guild-name">${guildName}</h1>
+                    <div class="koda-ticket-name">📂 Ticket: <b>${ticketName}</b></div>
                 </div>
-                <div class="Rustvalley-meta">
-                    <span class="Rustvalley-badge">TRANSCRIPT OFICIAL</span><br><br>
+                <div class="koda-meta">
+                    <span class="koda-badge">TRANSCRIPT OFICIAL</span><br><br>
                     Gerado em: ${exportDate}
                 </div>
             </div>

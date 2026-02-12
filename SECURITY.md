@@ -2,7 +2,7 @@
 
 ## Versões Suportadas
 
-Atualmente, oferecemos suporte de segurança apenas para a versão mais recente do Rustvalley Manager.
+Atualmente, oferecemos suporte de segurança apenas para a versão mais recente do Koda Manager.
 
 
 ## Relatando uma Vulnerabilidade

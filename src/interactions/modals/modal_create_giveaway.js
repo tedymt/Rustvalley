@@ -38,7 +38,7 @@ module.exports = {
                 { name: '👥 Participantes / Entries', value: '`0`', inline: true }
             )
             .setColor('#F1C40F')
-            .setFooter({ text: 'Rustvalley Manager • Good Luck!' });
+            .setFooter({ text: 'Koda Manager • Good Luck!' });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
@@ -73,7 +73,7 @@ module.exports = {
         });
         
         // Pequeno update para colocar o ID no footer (bom para debug)
-        const embedWithId = EmbedBuilder.from(embed).setFooter({ text: `ID: ${gw.id} • Rustvalley Manager` });
+        const embedWithId = EmbedBuilder.from(embed).setFooter({ text: `ID: ${gw.id} • Koda Manager` });
         await msg.edit({ embeds: [embedWithId] });
 
         await interaction.reply({ content: '✅ Sorteio publicado com sucesso!', ephemeral: true });

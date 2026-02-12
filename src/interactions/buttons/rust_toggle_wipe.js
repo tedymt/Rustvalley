@@ -101,7 +101,7 @@ async function refreshPanel(interaction, serverId, isEnabled) {
             `**Timer:** ${wipeCountDisplay}`
         )
         .setColor('#CE422B')
-        .setFooter({ text: 'Rustvalley Manager', iconURL: interaction.guild.iconURL() });
+        .setFooter({ text: 'Koda Manager', iconURL: interaction.guild.iconURL() });
 
     const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder().setCustomId(`rust_set_wipe_${serverId}`).setLabel('Set Date').setStyle(ButtonStyle.Primary).setEmoji('📅'),

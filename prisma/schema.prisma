@@ -151,7 +151,7 @@ model TicketConfig {
   title         String  @default("Central de Atendimento / Support Center")
   description   String  @default("🇧🇷 Selecione um departamento abaixo.\n🇺🇸 Select a department below.")
   color         String  @default("#5865F2")
-  footer        String  @default("Rustvalley Manager • Enterprise System")
+  footer        String  @default("Koda Manager • Enterprise System")
   banner        String?
   sendTranscriptToDM Boolean @default(false)
 }
